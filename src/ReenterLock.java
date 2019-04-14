@@ -9,25 +9,28 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  */
 public class ReenterLock implements Runnable {
-	
+
 	public static ReentrantLock lock = new ReentrantLock();
 	public static int i = 0;
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Runnable#run()
 	 */
 	@Override
 	public void run() {
-		for(int j = 0; j < 10000000; j++) {
+		for (int j = 0; j < 10000000; j++) {
 			lock.lock();
 			try {
 				i++;
-			}finally {
+			} finally {
 				lock.unlock();
 			}
 		}
-		
+
 	}
-	
+
 	public static void main(String[] args) throws InterruptedException {
 		ReenterLock tl = new ReenterLock();
 		Thread t1 = new Thread(tl);
@@ -38,6 +41,5 @@ public class ReenterLock implements Runnable {
 		t2.join();
 		System.out.println(i);
 	}
-	
 
 }

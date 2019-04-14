@@ -17,15 +17,15 @@ public class LockSupportDemo {
 		public ChangeObjectThread(String name) {
 			super.setName(name);
 		}
-		
+
 		public void run() {
-			synchronized(u) {
+			synchronized (u) {
 				System.out.println("in " + getName());
 				LockSupport.park();
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) throws InterruptedException {
 		t1.start();
 		Thread.sleep(100);

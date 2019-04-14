@@ -18,7 +18,7 @@ public class ScheduledExecutorServiceDemo {
 				try {
 					Thread.sleep(8000);
 					System.out.println(System.currentTimeMillis() / 1000);
-				} catch(InterruptedException e) {
+				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
